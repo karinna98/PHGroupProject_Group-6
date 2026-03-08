@@ -14,6 +14,7 @@ hints.data %>%
     sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
     q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
     q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE) # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE) 
   )
 
 # 'AvgDrinksPerWeek' B2.2
