@@ -4,16 +4,16 @@
 library(ggplot2)
 
 # Function Name: my_visual_func_I
-# Purpose: Create a bar chart showing the distribution of a categorical variable
+# Purpose: Create a box plot showing the distribution of a categorical variable
 # Inputs:
 #    data - the dataset being used
 #    variable - the categorical variable to visualize
 # Output:
-#    A bar chart showing the frequency of each category
+#    A box plot showing the frequency of each category
 
 my_visual_func_I <- function(data, variable) { 
 
-    # Create bar chart using ggplot
+    # Create box plot using ggplot
     ggplot(data, aes(x = factor(.data[[variable]]))) + 
 
         # geom_bar counts number of observations in each category
