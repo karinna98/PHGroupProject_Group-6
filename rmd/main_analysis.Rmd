@@ -52,6 +52,20 @@ The average drinks per week HINTS participant drank was about 3, the lowest was 
 summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDrinksPerWeek' variable
 ```
 
+Statistical summary of average drinks per week based on three different smoking groups. THe average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1. 
+
+```{r}
+hints.data %>%
+  group_by(smokeStat) %>%
+  summarise(
+    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
+    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
+    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE) # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE) # Variance
+  )
+```
 
 ### Weekly Minutes Moderate Exercise
 
