@@ -46,13 +46,13 @@ skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' packa
 
 ### Average Drinks Per Week
 
-The average drinks per week HINTS participant drank was about 3, the lowest was 0, and the highest was 70. 
+The average drinks per week HINTS participant drank was about 3, the lowest was 0, and the highest was 70.
 
 ```{r}
 summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDrinksPerWeek' variable
 ```
 
-Statistical summary of average drinks per week based on three different smoking groups. THe average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1. 
+Statistical summary of average drinks per week based on three different smoking groups. THe average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1.
 
 ```{r}
 hints.data %>%
@@ -78,37 +78,6 @@ skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' u
 ### BMI
 
 ## Univariate Visualizations
-
-```{r}
-# Load ggplot2 for creating visualizations
-library(ggplot2)
-
-# Box plot for categorical variables
-box_plot <- function(data, var) {
-    ggplot(data, aes(x = factor(.data[[var]]))) +
-        geom_bar(fill = "skyblue") +
-        labs(title = paste("Distribution of", var), x = var, y = "Count") +
-        theme_minimal()
-}
-
-# Histogram for continuous variables
-histogram <- function(data, var) {
-    ggplot(data, aes(x = .data[[var]])) +
-        geom_histogram(fill ' "orange", color = "black", bins = 30) +
-        labs(title = paste("Distribution of", var), x = var, y = "Frequency") + 
-        them_minimal()
-}
-
-# Examples
-
-# Box plot (categorical variables)
-box_plot(hints.data, "QualityCare")
-box_plot(hints.data, "RaceEthn5")
-
-# Histograms (continuous variables)
-histogram(hints.data, "Age")
-histogram(hints.data, "BMI")
-```
 
 ### Quality of Care
 
