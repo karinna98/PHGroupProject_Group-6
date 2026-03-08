@@ -67,6 +67,12 @@ hints.data %>%
   )
 ```
 
+Statistical summary of average drinks per week using the 'skimr' pacakge
+
+```{r echo=TRUE}
+skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' using 'skimr' 
+```
+
 ### Weekly Minutes Moderate Exercise
 
 ### BMI
