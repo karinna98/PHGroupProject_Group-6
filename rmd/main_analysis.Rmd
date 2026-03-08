@@ -14,9 +14,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Age
 
+The average age HINTS participant was approximately 56, the youngest participant was 18 and the oldest participant was 100 years of age. Furthermore, the median age was 58.
 
 ```{r}
 summary (hints.data$Age, na.rm=TRUE)
+```
+
+```{r}
+
 ```
 
 ### Average Drinks Per Week
@@ -33,13 +38,16 @@ summary (hints.data$Age, na.rm=TRUE)
 
 ### Age
 
+The histogram is displaying the age distribution of HINTS participants.
+
 ```{r}
 hist(hints.data$Age, main = "histogram of age")
 ```
 
 ### BMI
 
+The Boxplot is providing the five-number summary of Body Mass Index (BMI) of survey participants.
+
 ```{r}
 boxplot (hints.data$BMI, main = "BMI Boxplot")
 ```
-
