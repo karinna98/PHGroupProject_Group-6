@@ -20,4 +20,4 @@ hints.data %>%
 # 'AvgDrinksPerWeek' B2.2
 library(skimr) # Open 'skimr' package
 
-skim(hints.data$AvgDrinksPerWeek) # Statistical summary using skimr
+skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' using 'skimr'
