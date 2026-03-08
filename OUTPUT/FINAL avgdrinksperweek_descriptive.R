@@ -11,7 +11,7 @@ hints.data %>%
   summarise(
     mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
     median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
-    sd_avgdrinksperweek = sd(AbgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
     q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
     q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE) # 75th percentile
   )
