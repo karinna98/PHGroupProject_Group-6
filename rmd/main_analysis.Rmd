@@ -45,6 +45,33 @@ skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' packa
 
 ### Average Drinks Per Week
 
+The average drinks per week HINTS participant drank was about 3, the lowest was 0, and the highest was 70. 
+
+```{r}
+summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDrinksPerWeek' variable
+```
+
+Statistical summary of average drinks per week based on three different smoking groups
+
+```{r}
+hints.data %>%
+  group_by(smokeStat) %>%
+  summarise(
+    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
+    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
+    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE) # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE) # Variance
+  )
+```
+
+Statistical summary of average drinks per week using the 'skimr' packacge
+
+```{r}
+skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' using 'skimr'
+```
+
 ### Weekly Minutes Moderate Exercise
 
 ### BMI
