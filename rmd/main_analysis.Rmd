@@ -48,6 +48,11 @@ skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' packa
 
 The average drinks per week HINTS participant drank was about 3, the lowest was 0, and the highest was 70. 
 
+```{r}
+summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDrinksPerWeek' variable
+```
+
+
 ### Weekly Minutes Moderate Exercise
 
 ### BMI
