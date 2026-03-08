@@ -5,7 +5,7 @@ date: "2026-03-08"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = FALSE)
 library (dplyr) # open 'dplyr' package
 library(skimr) # open 'skimr' package
 ```
@@ -57,7 +57,7 @@ skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' packa
 
 ### Age
 
-The histogram is displaying the age distribution of HINTS participants.
+The histogram is displaying the age distribution of HINTS participants. The age distribution is left-skewed indicating that most survey participants were older. 
 
 ```{r}
 hist(hints.data$Age, main = "histogram of age")
@@ -65,8 +65,12 @@ hist(hints.data$Age, main = "histogram of age")
 
 ### BMI
 
-The Boxplot is providing the five-number summary of Body Mass Index (BMI) of survey participants.
+The boxplot is providing the five-number summary of Body Mass Index (BMI) of survey participants. The average BMI of HINTS participants was 28.61. The maximum was 73.80 and the minimum was 10.90. 
 
 ```{r}
 boxplot (hints.data$BMI, main = "BMI Boxplot")
 ```
+```{r}
+summary(hints.data$BMI) # provide statistical summary of 'BMI' 
+```
+
