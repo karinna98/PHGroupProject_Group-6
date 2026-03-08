@@ -23,7 +23,7 @@ The average age HINTS participant was approximately 56, the youngest participant
 summary (hints.data$Age, na.rm=TRUE)
 ```
 
-Statistical summary of age based on three different smoking groups. The average age for current smokers is 54, for former smokers is 61, and for individuals who never smoked is 53. 
+Statistical summary of age based on three different smoking groups. The average age for current smokers is 54, for former smokers is 61, and for individuals who never smoked is 53.
 
 ```{r}
 hints.data %>%
@@ -40,7 +40,7 @@ hints.data %>%
 
 Statistical summary of age utilizing the 'skimr' package.
 
-```{r}
+```{r echo=TRUE}
 skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' package
 ```
 
