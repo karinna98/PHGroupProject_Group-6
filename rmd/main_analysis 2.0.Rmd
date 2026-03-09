@@ -1,6 +1,6 @@
 ---
 title: "2020 HINTS Project"
-author: "Katirna Alatorre, Katrina Huynh, Jaime Rosas, and Linda Zavala"
+author: "Karinna Alatorre, Katrina Huynh, Jaime Rosas, and Linda Zavala"
 output: html_document
 date: "2026-03-08"
 ---
