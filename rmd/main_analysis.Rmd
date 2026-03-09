@@ -8,6 +8,7 @@ date: "2026-03-08"
 knitr::opts_chunk$set(echo = TRUE)
 library (dplyr) # open 'dplyr' package
 library(skimr) # open 'skimr' package
+read.csv(hints.data)
 ```
 
 # 2020 Health Information National Trends Survey (HINTS) Analysis
@@ -22,7 +23,7 @@ The average age HINTS participant was approximately 56, the youngest participant
 summary (hints.data$Age, na.rm=TRUE)
 ```
 
-Statistical summary of age based on three different smoking groups.
+Statistical summary of age based on three different smoking groups. The average age for current smokers is 54, for former smokers is 61, and for individuals who never smoked is 53.
 
 ```{r}
 hints.data %>%
@@ -39,11 +40,38 @@ hints.data %>%
 
 Statistical summary of age utilizing the 'skimr' package.
 
-```{r}
+```{r echo=TRUE}
 skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' package
 ```
 
 ### Average Drinks Per Week
+
+The average drinks per week HINTS participant drank was about 3, the lowest was 0, and the highest was 70.
+
+```{r}
+summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDrinksPerWeek' variable
+```
+
+Statistical summary of average drinks per week based on three different smoking groups. THe average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1.
+
+```{r}
+hints.data %>%
+  group_by(smokeStat) %>%
+  summarise(
+    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
+    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
+    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE) # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE) # Variance
+  )
+```
+
+Statistical summary of average drinks per week using the 'skimr' pacakge
+
+```{r echo=TRUE}
+skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' using 'skimr' 
+```
 
 ### Weekly Minutes Moderate Exercise
 
@@ -57,7 +85,7 @@ skim(hints.data$Age) # provides statistical summary for 'Age' using 'skim' packa
 
 ### Age
 
-The histogram is displaying the age distribution of HINTS participants.
+The histogram is displaying the age distribution of HINTS participants. The age distribution is left-skewed indicating that most survey participants were older.
 
 ```{r}
 hist(hints.data$Age, main = "histogram of age")
@@ -65,8 +93,12 @@ hist(hints.data$Age, main = "histogram of age")
 
 ### BMI
 
-The Boxplot is providing the five-number summary of Body Mass Index (BMI) of survey participants.
+The boxplot is providing the five-number summary of Body Mass Index (BMI) of survey participants. The average BMI of HINTS participants was 28.61. The maximum was 73.80 and the minimum was 10.90.
 
 ```{r}
 boxplot (hints.data$BMI, main = "BMI Boxplot")
+```
+
+```{r}
+summary(hints.data$BMI) # provide statistical summary of 'BMI' 
 ```
