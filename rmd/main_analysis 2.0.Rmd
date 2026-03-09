@@ -36,28 +36,6 @@ The average age HINTS participant was approximately 56, the youngest participant
 summary(hints.data$Age, na.rm=TRUE)
 ```
 
-
-##### Statistical summary of age based on three differnt smoking groups
-
-
-The average age for current smokers is 54, for former smokers is 61, and for individuals who never smoked is 53.
-
-
-```{r}
-hints.data %>%
-  group_by (smokeStat) %>%
-  summarise (
-    mean_age = mean(Age, na.rm=TRUE), # displays mean of 'Age'
-    median_age = median(Age, na.rm=TRUE), # displays median of 'Age'
-    sd_age = sd(Age, na.rm=TRUE), # displays standard deviation of 'Age'
-    q25_age = quantile(Age, 0.25, na.rm=TRUE), # displays 0.25 qt of 'Age'
-    q75_age = quantile(Age, 0.75, na.rm=TRUE), # displays 0.75 qt of 'Age' 
-    var_age = var(Age, na.rm = TRUE)
-  )
-```
-
-
-
 #### Statistical summary of age utilizing the 'skimr' package
 
 
@@ -78,24 +56,6 @@ summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary 'AvgDri
 ```
 
 
-#### Statistical summary of average drinks per week based on three different smoking groups
-
-
-The average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1.
-
-```{r}
-hints.data %>%
-  group_by(smokeStat) %>%
-  summarise (
-    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
-    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
-    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
-    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
-    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE), # 75th percentile
-    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE))# Variance
-```
-
-
 #### Statistical summary of average drinks per week using the 'skimr' pacakge
 
 
@@ -107,7 +67,18 @@ skim(hints.data$AvgDrinksPerWeek) # Statistical summary for 'AvgDrinksPerWeek' u
 
 ### Weekly Minutes Moderate Exercise
 
+```{r}
+summary(hints.data$WeeklyMinutesModerateExercise) # Five-number summary and mean
+sd(hints.data$WeeklyMinutesModerateExercise, na.rm = TRUE) # Standard deviation
+var(hints.data$WeeklyMinutesModerateExercise, na.rm = TRUE) # Variance
+```
 
+
+#### Statistical summary of WeeklyMinutesModerateExcerise using the 'skimr' pacakge
+
+```{r}
+skim(hints.data$WeeklyMinutesModerateExercise)
+```
 
 
 ### BMI
@@ -125,9 +96,81 @@ var(hints.data$BMI, na.rm = TRUE)
 ```
 
 
+#### Statistical summary of BMI using the 'skimr' pacakge
 
-#### Statistical summary of BMI based on three different smoking groups
+```{r}
+skim(hints.data$BMI)
+```
 
+
+### Statistical summaries based on three different smoking status
+
+Smoking status corresponds to ordered response categories. See key below.
+
+Key
+
+1 Current
+
+2 Former
+
+3 Never
+
+
+#### Age
+
+The average age for current smokers is 54, for former smokers is 61, and for individuals who never smoked is 53.
+
+
+```{r}
+hints.data %>%
+  group_by (smokeStat) %>%
+  summarise (
+    mean_age = mean(Age, na.rm=TRUE), # displays mean of 'Age'
+    median_age = median(Age, na.rm=TRUE), # displays median of 'Age'
+    sd_age = sd(Age, na.rm=TRUE), # displays standard deviation of 'Age'
+    q25_age = quantile(Age, 0.25, na.rm=TRUE), # displays 0.25 qt of 'Age'
+    q75_age = quantile(Age, 0.75, na.rm=TRUE), # displays 0.75 qt of 'Age' 
+    var_age = var(Age, na.rm = TRUE)
+  )
+```
+
+
+#### Average Drinks per Week
+
+The average drinks per week for current smokers is 5, for former smokers is 3, and for people who never smoked is 1.
+
+```{r}
+hints.data %>%
+  group_by(smokeStat) %>%
+  summarise(
+    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
+    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
+    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE), # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE)) # Variance
+```
+
+
+#### Weekly Minutes Moderate Exercise
+
+On average current smokers perform 154 minutes of exercise weekly. Former smokers perform an average 174 minutes weekly, and participants who never smoked perform an average of 158 minutes of exercise weekly. 
+```{r}
+hints.data %>%
+  group_by(smokeStat) %>%
+  summarise(
+    mean_weeklyexercise = mean(WeeklyMinutesModerateExercise, na.rm = TRUE), # Mean
+    med_weeklyexercise = median(WeeklyMinutesModerateExercise),
+    sd_weeklyexercise = sd(WeeklyMinutesModerateExercise, na.rm = TRUE), # Standard deviation
+    var_weeklyexercise = var(WeeklyMinutesModerateExercise, na.rm = TRUE), # Variance
+q_25_weeklyminmoderateexercise = quantile(WeeklyMinutesModerateExercise, 0.25),
+q_75 = quantile(WeeklyMinutesModerateExercise, 0.75))
+
+```
+
+#### BMI
+
+Current, former, and participants who never smoked have an average BMI of 28.
 
 ```{r}
 hints.data %>%
@@ -140,14 +183,6 @@ hints.data %>%
      bmi.q25 = quantile(BMI, 0.25), #0.25 qt of BMI
     bmi.q75 = quantile(BMI, 0.75) #0.75 of BMI
   )
-```
-
-
-
-#### Statistical summary of BMI using the 'skimr' pacakge
-
-```{r}
-skim(hints.data$BMI)
 ```
 
 
@@ -168,14 +203,14 @@ my_summary_func <- function(x) { #defines a function
   )
 }
 
-#applying my_summary_function to all continous variables
-my_summary_func(hints.data$Age)
+#applying my_summary_function to all continuous variables
+my_summary_func(hints.data$Age) #Age
 
-my_summary_func(hints.data$BMI)
+my_summary_func(hints.data$BMI) #BMI
 
-my_summary_func(hints.data$AvgDrinksPerWeek)
+my_summary_func(hints.data$AvgDrinksPerWeek) #Avg Drinks Per Week
 
-my_summary_func(hints.data$WeeklyMinutesModerateExercise)
+my_summary_func(hints.data$WeeklyMinutesModerateExercise) #Weekly Minutes Moderate Exercise
 ```
 
 

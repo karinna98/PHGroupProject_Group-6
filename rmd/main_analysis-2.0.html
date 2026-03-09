@@ -380,28 +380,6 @@ Furthermore, the median age was 58.</p>
 <pre class="r"><code>summary(hints.data$Age, na.rm=TRUE)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   18.00   43.00   58.00   55.59   68.00  100.00</code></pre>
-<div id="statistical-summary-of-age-based-on-three-differnt-smoking-groups" class="section level5">
-<h5>Statistical summary of age based on three differnt smoking
-groups</h5>
-<p>The average age for current smokers is 54, for former smokers is 61,
-and for individuals who never smoked is 53.</p>
-<pre class="r"><code>hints.data %&gt;%
-  group_by (smokeStat) %&gt;%
-  summarise (
-    mean_age = mean(Age, na.rm=TRUE), # displays mean of &#39;Age&#39;
-    median_age = median(Age, na.rm=TRUE), # displays median of &#39;Age&#39;
-    sd_age = sd(Age, na.rm=TRUE), # displays standard deviation of &#39;Age&#39;
-    q25_age = quantile(Age, 0.25, na.rm=TRUE), # displays 0.25 qt of &#39;Age&#39;
-    q75_age = quantile(Age, 0.75, na.rm=TRUE), # displays 0.75 qt of &#39;Age&#39; 
-    var_age = var(Age, na.rm = TRUE)
-  )</code></pre>
-<pre><code>## # A tibble: 3 × 7
-##   smokeStat mean_age median_age sd_age q25_age q75_age var_age
-##       &lt;int&gt;    &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1         1     54.5         57   14.5      44      65    212.
-## 2         2     61.4         64   14.8      52      72    219.
-## 3         3     53.4         55   17.0      39      66    290.</code></pre>
-</div>
 <div id="statistical-summary-of-age-utilizing-the-skimr-package" class="section level4">
 <h4>Statistical summary of age utilizing the ‘skimr’ package</h4>
 <pre class="r"><code>skim(hints.data$Age) # provides statistical summary for &#39;Age&#39; using &#39;skim&#39; package</code></pre>
@@ -497,29 +475,6 @@ lowest was 0, and the highest was 70.</p>
 <pre class="r"><code>summary(hints.data$AvgDrinksPerWeek, na.rm = TRUE) # Descriptive summary &#39;AvgDrinksPerWeek&#39; variable</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   0.000   0.000   3.358   4.000  70.000</code></pre>
-<div id="statistical-summary-of-average-drinks-per-week-based-on-three-different-smoking-groups" class="section level4">
-<h4>Statistical summary of average drinks per week based on three
-different smoking groups</h4>
-<p>The average drinks per week for current smokers is 5, for former
-smokers is 3, and for people who never smoked is 1.</p>
-<pre class="r"><code>hints.data %&gt;%
-  group_by(smokeStat) %&gt;%
-  summarise (
-    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
-    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
-    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
-    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
-    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE), # 75th percentile
-    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE))# Variance</code></pre>
-<pre><code>## # A tibble: 3 × 7
-##   smokeStat mean_avgdrinksperweek median_avgdrinksperweek sd_avgdrinksperweek
-##       &lt;int&gt;                 &lt;dbl&gt;                   &lt;dbl&gt;               &lt;dbl&gt;
-## 1         1                  4.87                       0                9.31
-## 2         2                  4.41                       1                7.78
-## 3         3                  2.68                       0                5.31
-## # ℹ 3 more variables: q25_avgdrinksperweek &lt;dbl&gt;, q75_avgdrinksperweek &lt;dbl&gt;,
-## #   var_avgdrinksperweek &lt;dbl&gt;</code></pre>
-</div>
 <div id="statistical-summary-of-average-drinks-per-week-using-the-skimr-pacakge" class="section level4">
 <h4>Statistical summary of average drinks per week using the ‘skimr’
 pacakge</h4>
@@ -611,6 +566,101 @@ pacakge</h4>
 </div>
 <div id="weekly-minutes-moderate-exercise" class="section level3">
 <h3>Weekly Minutes Moderate Exercise</h3>
+<pre class="r"><code>summary(hints.data$WeeklyMinutesModerateExercise) # Five-number summary and mean</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.0     0.0    90.0   161.8   210.0  4620.0</code></pre>
+<pre class="r"><code>sd(hints.data$WeeklyMinutesModerateExercise, na.rm = TRUE) # Standard deviation</code></pre>
+<pre><code>## [1] 271.1893</code></pre>
+<pre class="r"><code>var(hints.data$WeeklyMinutesModerateExercise, na.rm = TRUE) # Variance</code></pre>
+<pre><code>## [1] 73543.61</code></pre>
+<div id="statistical-summary-of-weeklyminutesmoderateexcerise-using-the-skimr-pacakge" class="section level4">
+<h4>Statistical summary of WeeklyMinutesModerateExcerise using the
+‘skimr’ pacakge</h4>
+<pre class="r"><code>skim(hints.data$WeeklyMinutesModerateExercise)</code></pre>
+<table>
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">hints.data$WeeklyMinutesM…</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">2402</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table style="width:100%;">
+<colgroup>
+<col width="17%" />
+<col width="12%" />
+<col width="17%" />
+<col width="8%" />
+<col width="8%" />
+<col width="3%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="6%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">data</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">161.78</td>
+<td align="right">271.19</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">90</td>
+<td align="right">210</td>
+<td align="right">4620</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="bmi" class="section level3">
 <h3>BMI</h3>
@@ -622,26 +672,6 @@ highest was approximately 73.80. The average BMI among participants was
 ##   10.90   24.00   27.50   28.61   31.90   73.80</code></pre>
 <pre class="r"><code>var(hints.data$BMI, na.rm = TRUE)</code></pre>
 <pre><code>## [1] 42.75028</code></pre>
-<div id="statistical-summary-of-bmi-based-on-three-different-smoking-groups" class="section level4">
-<h4>Statistical summary of BMI based on three different smoking
-groups</h4>
-<pre class="r"><code>hints.data %&gt;%
-  group_by(smokeStat) %&gt;% #group the dataset by smoking status
-  summarise(
-    bmi.mean = mean(BMI), #mean BMI for each smoking group
-    bmi.med = median(BMI), #median 
-    bmi.sd = sd(BMI), #standard deviation of BMI
-    bmi.var = var(BMI), #variance of the BMI
-     bmi.q25 = quantile(BMI, 0.25), #0.25 qt of BMI
-    bmi.q75 = quantile(BMI, 0.75) #0.75 of BMI
-  )</code></pre>
-<pre><code>## # A tibble: 3 × 7
-##   smokeStat bmi.mean bmi.med bmi.sd bmi.var bmi.q25 bmi.q75
-##       &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1         1     28.7    27.6   6.60    43.6    23.9    33.3
-## 2         2     28.8    27.8   6.34    40.2    24.2    32.1
-## 3         3     28.5    27.5   6.61    43.7    23.8    31.6</code></pre>
-</div>
 <div id="statistical-summary-of-bmi-using-the-skimr-pacakge" class="section level4">
 <h4>Statistical summary of BMI using the ‘skimr’ pacakge</h4>
 <pre class="r"><code>skim(hints.data$BMI)</code></pre>
@@ -730,6 +760,103 @@ groups</h4>
 </table>
 </div>
 </div>
+<div id="statistical-summaries-based-on-three-different-smoking-status" class="section level3">
+<h3>Statistical summaries based on three different smoking status</h3>
+<p>Smoking status corresponds to ordered response categories. See key
+below.</p>
+<p>Key</p>
+<p>1 Current</p>
+<p>2 Former</p>
+<p>3 Never</p>
+<div id="age-1" class="section level4">
+<h4>Age</h4>
+<p>The average age for current smokers is 54, for former smokers is 61,
+and for individuals who never smoked is 53.</p>
+<pre class="r"><code>hints.data %&gt;%
+  group_by (smokeStat) %&gt;%
+  summarise (
+    mean_age = mean(Age, na.rm=TRUE), # displays mean of &#39;Age&#39;
+    median_age = median(Age, na.rm=TRUE), # displays median of &#39;Age&#39;
+    sd_age = sd(Age, na.rm=TRUE), # displays standard deviation of &#39;Age&#39;
+    q25_age = quantile(Age, 0.25, na.rm=TRUE), # displays 0.25 qt of &#39;Age&#39;
+    q75_age = quantile(Age, 0.75, na.rm=TRUE), # displays 0.75 qt of &#39;Age&#39; 
+    var_age = var(Age, na.rm = TRUE)
+  )</code></pre>
+<pre><code>## # A tibble: 3 × 7
+##   smokeStat mean_age median_age sd_age q25_age q75_age var_age
+##       &lt;int&gt;    &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1         1     54.5         57   14.5      44      65    212.
+## 2         2     61.4         64   14.8      52      72    219.
+## 3         3     53.4         55   17.0      39      66    290.</code></pre>
+</div>
+<div id="average-drinks-per-week-1" class="section level4">
+<h4>Average Drinks per Week</h4>
+<p>The average drinks per week for current smokers is 5, for former
+smokers is 3, and for people who never smoked is 1.</p>
+<pre class="r"><code>hints.data %&gt;%
+  group_by(smokeStat) %&gt;%
+  summarise(
+    mean_avgdrinksperweek = mean(AvgDrinksPerWeek, na.rm = TRUE), # Mean
+    median_avgdrinksperweek = median(AvgDrinksPerWeek, na.rm = TRUE), # Median 
+    sd_avgdrinksperweek = sd(AvgDrinksPerWeek, na.rm = TRUE), # Standard deviation
+    q25_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.25, na.rm = TRUE), # 25th percentile
+    q75_avgdrinksperweek = quantile(AvgDrinksPerWeek, 0.75, na.rm = TRUE), # 75th percentile
+    var_avgdrinksperweek = var(AvgDrinksPerWeek, na.rm = TRUE)) # Variance</code></pre>
+<pre><code>## # A tibble: 3 × 7
+##   smokeStat mean_avgdrinksperweek median_avgdrinksperweek sd_avgdrinksperweek
+##       &lt;int&gt;                 &lt;dbl&gt;                   &lt;dbl&gt;               &lt;dbl&gt;
+## 1         1                  4.87                       0                9.31
+## 2         2                  4.41                       1                7.78
+## 3         3                  2.68                       0                5.31
+## # ℹ 3 more variables: q25_avgdrinksperweek &lt;dbl&gt;, q75_avgdrinksperweek &lt;dbl&gt;,
+## #   var_avgdrinksperweek &lt;dbl&gt;</code></pre>
+</div>
+<div id="weekly-minutes-moderate-exercise-1" class="section level4">
+<h4>Weekly Minutes Moderate Exercise</h4>
+<p>On average current smokers perform 154 minutes of exercise weekly.
+Former smokers perform an average 174 minutes weekly, and participants
+who never smoked perform an average of 158 minutes of exercise
+weekly.</p>
+<pre class="r"><code>hints.data %&gt;%
+  group_by(smokeStat) %&gt;%
+  summarise(
+    mean_weeklyexercise = mean(WeeklyMinutesModerateExercise, na.rm = TRUE), # Mean
+    med_weeklyexercise = median(WeeklyMinutesModerateExercise),
+    sd_weeklyexercise = sd(WeeklyMinutesModerateExercise, na.rm = TRUE), # Standard deviation
+    var_weeklyexercise = var(WeeklyMinutesModerateExercise, na.rm = TRUE), # Variance
+q_25_weeklyminmoderateexercise = quantile(WeeklyMinutesModerateExercise, 0.25),
+q_75 = quantile(WeeklyMinutesModerateExercise, 0.75))</code></pre>
+<pre><code>## # A tibble: 3 × 7
+##   smokeStat mean_weeklyexercise med_weeklyexercise sd_weeklyexercise
+##       &lt;int&gt;               &lt;dbl&gt;              &lt;dbl&gt;             &lt;dbl&gt;
+## 1         1                154.                 60              310.
+## 2         2                174.                 90              305.
+## 3         3                158.                 90              249.
+## # ℹ 3 more variables: var_weeklyexercise &lt;dbl&gt;,
+## #   q_25_weeklyminmoderateexercise &lt;dbl&gt;, q_75 &lt;dbl&gt;</code></pre>
+</div>
+<div id="bmi-1" class="section level4">
+<h4>BMI</h4>
+<p>Current, former, and participants who never smoked have an average
+BMI of 28.</p>
+<pre class="r"><code>hints.data %&gt;%
+  group_by(smokeStat) %&gt;% #group the dataset by smoking status
+  summarise(
+    bmi.mean = mean(BMI), #mean BMI for each smoking group
+    bmi.med = median(BMI), #median 
+    bmi.sd = sd(BMI), #standard deviation of BMI
+    bmi.var = var(BMI), #variance of the BMI
+     bmi.q25 = quantile(BMI, 0.25), #0.25 qt of BMI
+    bmi.q75 = quantile(BMI, 0.75) #0.75 of BMI
+  )</code></pre>
+<pre><code>## # A tibble: 3 × 7
+##   smokeStat bmi.mean bmi.med bmi.sd bmi.var bmi.q25 bmi.q75
+##       &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1         1     28.7    27.6   6.60    43.6    23.9    33.3
+## 2         2     28.8    27.8   6.34    40.2    24.2    32.1
+## 3         3     28.5    27.5   6.61    43.7    23.8    31.6</code></pre>
+</div>
+</div>
 <div id="function-for-descriptive-statistics" class="section level3">
 <h3>Function for Descriptive Statistics</h3>
 <p>A single function labeled “my_summary_func” to display the results of
@@ -745,8 +872,8 @@ my_summary_func &lt;- function(x) { #defines a function
   )
 }
 
-#applying my_summary_function to all continous variables
-my_summary_func(hints.data$Age)</code></pre>
+#applying my_summary_function to all continuous variables
+my_summary_func(hints.data$Age) #Age</code></pre>
 <pre><code>## $Mean
 ## [1] 55.59117
 ## 
@@ -759,7 +886,7 @@ my_summary_func(hints.data$Age)</code></pre>
 ## $Five.Num.Summary
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   18.00   43.00   58.00   55.59   68.00  100.00</code></pre>
-<pre class="r"><code>my_summary_func(hints.data$BMI)</code></pre>
+<pre class="r"><code>my_summary_func(hints.data$BMI) #BMI</code></pre>
 <pre><code>## $Mean
 ## [1] 28.60704
 ## 
@@ -772,7 +899,7 @@ my_summary_func(hints.data$Age)</code></pre>
 ## $Five.Num.Summary
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   10.90   24.00   27.50   28.61   31.90   73.80</code></pre>
-<pre class="r"><code>my_summary_func(hints.data$AvgDrinksPerWeek)</code></pre>
+<pre class="r"><code>my_summary_func(hints.data$AvgDrinksPerWeek) #Avg Drinks Per Week</code></pre>
 <pre><code>## $Mean
 ## [1] 3.358035
 ## 
@@ -785,7 +912,7 @@ my_summary_func(hints.data$Age)</code></pre>
 ## $Five.Num.Summary
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   0.000   0.000   3.358   4.000  70.000</code></pre>
-<pre class="r"><code>my_summary_func(hints.data$WeeklyMinutesModerateExercise)</code></pre>
+<pre class="r"><code>my_summary_func(hints.data$WeeklyMinutesModerateExercise) #Weekly Minutes Moderate Exercise</code></pre>
 <pre><code>## $Mean
 ## [1] 161.7818
 ## 
@@ -838,7 +965,7 @@ majority of the participants were non-Hispanic white.</p>
 <p>4 Non-Hispanic Asian</p>
 <p>5 Non-Hispanic Other</p>
 </div>
-<div id="age-1" class="section level3">
+<div id="age-2" class="section level3">
 <h3>Age</h3>
 <pre class="r"><code>hist(hints.data$Age, 
      main = &quot;Histogram of Age&quot;,
@@ -848,7 +975,7 @@ majority of the participants were non-Hispanic white.</p>
 participants. The age distribution is left-skewed indicating that most
 survey participants were older.</p>
 </div>
-<div id="bmi-1" class="section level3">
+<div id="bmi-2" class="section level3">
 <h3>BMI</h3>
 <pre class="r"><code>boxplot (hints.data$BMI, 
          main = &quot;BMI Boxplot&quot;)</code></pre>
